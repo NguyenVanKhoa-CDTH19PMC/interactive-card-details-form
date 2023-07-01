@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk");
+
+:root {
+  --Light-grayish-violet: hsl(270, 3%, 87%);
+  --Dark-grayish-violet: hsl(279, 6%, 55%);
+  --Very-dark-violet: hsl(278, 68%, 11%);
+}
+* {
+  margin: 0;
+  letter-spacing: 1px;
+}
+body {
+  font-family: "Space Grotesk";
+}
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+main {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+}
+.review {
+  position: relative;
+}
+.review-background {
+  width: 100%;
+  height: 100%;
+}
+.review-background.mobile {
+  display: block;
+}
+.review-background.desktop {
+  display: none;
+}
+.review-card-back,
+.review-card-front {
+  width: 350px;
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.review-card-back {
+  right: 50%;
+  bottom: 70px;
+  transform: translateX(60%);
+}
+.review-card-front {
+  z-index: 99;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-60%);
+}
+.review-card-front-background,
+.review-card-back-background {
+  width: 100%;
+}
+.review-card-front > *:not(.review-card-front-background) {
+  position: absolute;
+}
+.card-logo {
+  width: 60px;
+  top: 20px;
+  left: 20px;
+}
+.card-numer-review {
+  bottom: 40px;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: white;
+}
+.name-review {
+  color: white;
+  font-size: 11px;
+  text-transform: uppercase;
+  bottom: 8px;
+  left: 22px;
+}
+.exp-date-review {
+  color: white;
+  font-size: 11px;
+  bottom: 8px;
+  right: 22px;
+}
+
+.review-card-back > *:not(.review-card-back-background) {
+  position: absolute;
+}
+
+.review-card-back img,
+.review-card-front img {
+}
+.cvc-review {
+  color: white;
+  font-weight: 500;
+  font-size: 10px;
+  text-align: right;
+  top: 87px;
+  right: 45px;
+}
+/* content */
+.content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 30px 50px 30px;
+}
+.card-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  row-gap: 5px;
+  border: none;
+}
+.exp-date-fieldset {
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: fit-content;
+  width: calc((100% / 2) - 15px);
+  > label {
+    width: 100%;
+  }
+  > input {
+    width: calc((100% / 2) - 5px);
+  }
+}
+.cvc-fieldset {
+  width: calc((100% / 2) - 15px);
+}
+label {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+}
+input {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: 1px solid var(--Light-grayish-violet);
+  border-radius: 8px;
+}
+input::placeholder {
+  color: var(--Dark-grayish-violet);
+}
+input:focus {
+  box-shadow: none;
+  border-color: hsl(263, 98%, 24%);
+}
+.error {
+  margin: 0;
+  font-size: 11px;
+  color: red;
+}
+button {
+  border-radius: 8px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: bold;
+  /* border: none; */
+  /* border-radius: 8px; */
+  color: white;
+  background: var(--Very-dark-violet);
+}
+.completed {
+  display: none;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+.completed-icon {
+  margin-bottom: 20px;
+}
+.completed-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+.completed-description {
+  font-weight: bold;
+  color: var(--Dark-grayish-violet);
+}
+/* footer */
+footer {
+  width: 100%;
+  font-size: 12px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 50px;
+
+  bottom: 0;
+}
+footer a {
+  color: rgb(121, 0, 177);
+  text-decoration: none;
+}
+@media screen and (min-width: 1440px) {
+  main {
+    flex-direction: row;
+  }
+
+  .review-background.mobile {
+    display: none;
+  }
+  .review-background.desktop {
+    display: block;
+  }
+  .review-card-front {
+    bottom: auto;
+    right: -25%;
+    top: 50%;
+    left: auto;
+    transform: translateY(-107%);
+  }
+  .review-card-back {
+    bottom: 50%;
+    right: -50%;
+    top: auto;
+    left: auto;
+    transform: translateY(107%);
+  }
+  .content {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+  }
+  .card-form {
+    max-width: 400px;
+  }
+  footer {
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+}
