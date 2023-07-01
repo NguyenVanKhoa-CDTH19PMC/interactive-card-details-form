@@ -1,19 +1,27 @@
 window.onload = function () {
     let form = document.getElementById("card-form");
 
-    function formatPhoneNumber(number) {
+    function formatCardNumber(number) {
         if (number == '')
             return null;
         let numberFormated;
         number = number.replace(/\s/g, '');
-        numberFormated = number.substr(0, 4) + ' ' + number.substr(4, 4) + ' ' + number.substr(8, 4) + ' ' + number.substr(12, 4) || null;
+        numberFormated = number.substr(0, 4);
+        if (numberFormated.length >= 4)
+            numberFormated += ' ' + number.substr(4, 4);
+        if (numberFormated.length > 8)
+            numberFormated += ' ' + number.substr(8, 4);
+        if (numberFormated.length > 13)
+            numberFormated += ' ' + number.substr(12, 4);
+        // numberFormated += '' || null;
+        // numberFormated = number.substr(0, 4) + ' ' + number.substr(4, 4) + ' ' + number.substr(8, 4) + ' ' + number.substr(12, 4) || null;
         return numberFormated;
     }
 
     function review() {
         document.getElementById("name-review").innerHTML = form.elements['name'].value || "Jane Appleseed";
-        document.getElementById("card-numer-review").innerHTML = formatPhoneNumber(form.elements['card-number'].value) || "0000 0000 0000 0000";
-        // form.elements['card-number'].value = formatPhoneNumber(form.elements['card-number'].value);
+        document.getElementById("card-numer-review").innerHTML = formatCardNumber(form.elements['card-number'].value) || "0000 0000 0000 0000";
+        form.elements['card-number'].value = formatCardNumber(form.elements['card-number'].value);
         document.getElementById("exp-date-review").innerHTML = (form.elements['month'].value || "00") + "/" + (form.elements['year'].value || '00');
         document.getElementById("cvc-review").innerHTML = form.elements['cvc'].value || "000";
     }
